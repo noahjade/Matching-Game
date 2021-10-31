@@ -11,7 +11,8 @@ public class Board : MonoBehaviour
 
     public int borderSize;
 
-    public GameObject tilePrefab;
+    public GameObject tileNormalPrefab;
+    public GameObject tileObstaclePrefab;
     public GameObject[] gamePiecePrefabs;
 
     public float swapTime = 0.5f;
@@ -23,6 +24,18 @@ public class Board : MonoBehaviour
     Tile m_targetTile;
 
     bool m_playerInputEnabled = true;
+
+    public StartingTile[] startingTiles;
+
+    //this is so we can see the class in the inspector
+    [System.Serializable]
+    public class StartingTile
+    {
+        public GameObject tilePrefab;
+        public int x;
+        public int y;
+        public int z;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +53,7 @@ public class Board : MonoBehaviour
         {
             for (int j = 0; j < height; j++)
             {
-                GameObject tile = Instantiate(tilePrefab, new Vector3(i, j, 0), Quaternion.identity) as GameObject; //as GameObject casts the object when we instantiate.
+                GameObject tile = Instantiate(tileNormalPrefab, new Vector3(i, j, 0), Quaternion.identity) as GameObject; //as GameObject casts the object when we instantiate.
                 tile.name = "Tile (" + i + "," + j + ")";
                 m_allTiles[i, j] = tile.GetComponent<Tile>();
 
