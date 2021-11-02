@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7de3368473d5b1949aa849fbd27606d4, type: 3}
-  m_Color: {r: 0.08627451, g: 0.06666667, b: 0.06666667, a: 1}
+  m_Color: {r: 0.17254902, g: 0.08627451, b: 0.2784314, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xIndex: 0
   yIndex: 0
-  TileType: 1
+  tileType: 1
 --- !u!61 &5396713537383283017
 BoxCollider2D:
   m_ObjectHideFlags: 0

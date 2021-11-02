@@ -15,7 +15,7 @@ public class Tile : MonoBehaviour
 
     Board m_board;
 
-    public TileType TileType = TileType.Normal;
+    public TileType tileType = TileType.Normal;
 
     // Start is called before the first frame update
     void Start()
