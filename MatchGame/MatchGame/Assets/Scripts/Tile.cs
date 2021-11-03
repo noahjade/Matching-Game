@@ -84,7 +84,8 @@ public class Tile : MonoBehaviour
 
     IEnumerator BreakTileRoutine()
     {
-        breakableValue = Mathf.Clamp(breakableValue--, 0, breakableValue);
+        breakableValue--;
+        breakableValue = Mathf.Clamp(breakableValue, 0, breakableValue);
 
         yield return new WaitForSeconds(0.25f);
 
@@ -94,7 +95,7 @@ public class Tile : MonoBehaviour
         }
 
         // if it gets all the way down to zero, then we want to become a normal tile
-        if(breakableValue == 0)
+        if(breakableValue <= 0)
         {
             tileType = TileType.Normal;
             m_spriteRenderer.color = normalColor;

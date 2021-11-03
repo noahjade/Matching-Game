@@ -464,14 +464,20 @@ public class Board : MonoBehaviour
 
     void HighLightTileOff(int x, int y)
     {
-        SpriteRenderer spriteRenderer = m_allTiles[x, y].GetComponent<SpriteRenderer>();
-        spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0);
+        if (m_allTiles[x,y].tileType != TileType.Breakable)
+        {
+            SpriteRenderer spriteRenderer = m_allTiles[x, y].GetComponent<SpriteRenderer>();
+            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0);        
+        }
     }
 
     void HighLightTileOn(int x, int y, Color col)
     {
-        SpriteRenderer spriteRenderer = m_allTiles[x,y].GetComponent<SpriteRenderer>();
-        spriteRenderer.color = col;
+        if (m_allTiles[x,y].tileType != TileType.Breakable)
+        {
+            SpriteRenderer spriteRenderer = m_allTiles[x,y].GetComponent<SpriteRenderer>();
+            spriteRenderer.color = col;
+        }
     }
 
     void HighLightMatchesAt(int i, int j)
@@ -512,6 +518,27 @@ public class Board : MonoBehaviour
         }
 
         HighLightTileOff(x, y);
+    }
+
+    void BreakTileAt(int x, int y){
+        Tile tileToBreak = m_allTiles[x,y];
+        
+        if(tileToBreak != null)
+        {
+            tileToBreak.BreakTile();
+        }
+
+    }
+
+    void BreakTileAt(List<GamePiece> gamePieces)
+    {
+        foreach (GamePiece piece in gamePieces)
+        {
+            if(piece != null)
+            {
+                BreakTileAt(piece.xIndex, piece.yIndex);
+            }
+        }
     }
 
     void ClearBoard()
@@ -653,6 +680,8 @@ public class Board : MonoBehaviour
         while (!isFinished)
         {
             ClearPieceAt(gamePieces);
+            // want to break all the tiles for the this list of gamepieces
+            BreakTileAt(gamePieces);
 
             yield return new WaitForSeconds(0.1f);
             movingPieces = CollapseColumn(gamePieces);

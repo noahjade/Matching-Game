@@ -489,13 +489,21 @@ MonoBehaviour:
   - {fileID: 7606494367477848579, guid: 84154e577a6a4714388b8a08e43c243e, type: 3}
   swapTime: 0.3
   startingTiles:
-  - tilePrefab: {fileID: 6994723440504325893, guid: c4d961cf1c421fa4f85e41e7045d9913, type: 3}
+  - tilePrefab: {fileID: 2811795196635317715, guid: e0bdfec6455ae4a42b7e6604ee7e13d2, type: 3}
     x: 3
     y: 4
     z: 0
   - tilePrefab: {fileID: 6994723440504325893, guid: c4d961cf1c421fa4f85e41e7045d9913, type: 3}
     x: 5
     y: 5
+    z: 0
+  - tilePrefab: {fileID: 2811795196635317715, guid: e0bdfec6455ae4a42b7e6604ee7e13d2, type: 3}
+    x: 6
+    y: 5
+    z: 0
+  - tilePrefab: {fileID: 5597534888798382429, guid: 7be619b4de901524f804f49035c4cab9, type: 3}
+    x: 1
+    y: 1
     z: 0
 --- !u!4 &1883226453
 Transform:
