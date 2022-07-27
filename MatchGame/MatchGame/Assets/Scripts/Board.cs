@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Linq;
 
 public class Board : MonoBehaviour
@@ -14,6 +15,8 @@ public class Board : MonoBehaviour
     public GameObject tileNormalPrefab;
     public GameObject tileObstaclePrefab;
     public GameObject[] gamePiecePrefabs;
+
+    public Text infoText;
 
     public float swapTime = 0.5f;
 
@@ -45,6 +48,8 @@ public class Board : MonoBehaviour
         SetUpTiles();
         SetupCamera();
         FillBoard();
+
+        infoText.text = "0";
     }
 
     void MakeTile(GameObject prefab, int x, int y, int z = 0) {
@@ -265,8 +270,6 @@ public class Board : MonoBehaviour
                 }
                 else
                 {
-                    
-
                     ClearAndRefillBoard(clickedPieceMatches.Union(targetPieceMatches).ToList());
                     //ClearPieceAt(clickedPieceMatches); // delete matched
                     //ClearPieceAt(targetPieceMatches);
@@ -555,6 +558,8 @@ public class Board : MonoBehaviour
 
     void ClearPieceAt(List<GamePiece> gamePieces)
     {
+        // score check stuff, not super appropriate but w/e
+        infoText.text = (int.Parse(infoText.text) + gamePieces.Count) + "";
         foreach (GamePiece piece in gamePieces)
         {
             if(piece != null)
@@ -614,6 +619,7 @@ public class Board : MonoBehaviour
     }
 
 
+
     /**
      * Helper function for getting all the columns associated with a list of gamepieces
      * useful for deciding which columns to collapse after a match.
@@ -643,7 +649,7 @@ public class Board : MonoBehaviour
         
         m_playerInputEnabled = false;
         List<GamePiece> matches = gamePieces; // going to make sure matches are cleared if they fall into place as a match when refilling.
-
+        
 
         do
         {
