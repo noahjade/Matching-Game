@@ -2,6 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum MatchValue {
+        Yellow,
+        Blue,
+        Magenta,
+        Indigo,
+        Green,
+        Teal,
+        Red,
+        Cyan,
+        Wild
+}
 
 public class GamePiece : MonoBehaviour
 {
@@ -23,18 +34,7 @@ public class GamePiece : MonoBehaviour
         SmootherStep
     }
 
-    public enum MatchValue
-    {
-        Yellow,
-        Blue,
-        Magenta,
-        Indigo,
-        Green,
-        Teal,
-        Red,
-        Cyan,
-        Wild
-    }
+
 
     public MatchValue matchValue;
 

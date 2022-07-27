@@ -258,13 +258,14 @@ public class Board : MonoBehaviour
 
                 if (clickedPieceMatches.Count == 0 && targetPieceMatches.Count == 0)
                 {
+                    // no matches, swap them back.
                     clickedPiece.Move(clickedTile.xIndex, clickedTile.yIndex, swapTime);
                     targetPiece.Move(targetTile.xIndex, targetTile.yIndex, swapTime);
+                    yield return new WaitForSeconds(swapTime); // wait for second swap
                 }
                 else
                 {
-                    yield return new WaitForSeconds(swapTime); // wait for second swap
-
+                    
 
                     ClearAndRefillBoard(clickedPieceMatches.Union(targetPieceMatches).ToList());
                     //ClearPieceAt(clickedPieceMatches); // delete matched
